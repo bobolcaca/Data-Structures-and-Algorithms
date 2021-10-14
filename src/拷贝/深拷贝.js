@@ -12,7 +12,7 @@ Object.prototype.for = function (cb) {
 
 
 // 只给 Object 原型链上添加 cloneDeep 方法，避免不合规定的数据使用
-// ALREADY_CLONED：已创建对象 避免无限引用 注意：会增大内存使用 并大幅降低性能
+// CLONED_MAP：循环调用缓存区 避免循环引用
 Object.prototype.cloneDeep = function (CLONED_MAP = new WeakMap()) {
 
     // 循环调用缓存区有目标值

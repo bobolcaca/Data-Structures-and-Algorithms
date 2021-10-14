@@ -48,7 +48,6 @@ describe('混合多种 Object 子类型', function () {
 })
 
 describe('循环调用', function () {
-    // TODO 解一层循环 不应该在 _clone 中再检查、提取返回相同的circular
     // 循环调用1
     const array_key = ['ak']
     const map = new Map()
@@ -69,13 +68,13 @@ describe('循环调用', function () {
     fn.fn = fn
 
     const 对比表 = {
-        // 循环调用1: [1, 2, [3, 4, [5], { num: 6 }], { aa: 1, b: [2, 3] }, map],
-        // 循环调用2: a,
+        循环调用1: [1, 2, [3, 4, [5], { num: 6 }], { aa: 1, b: [2, 3] }, map],
+        循环调用2: a,
         循环调用3: fn
     }
 
     Object.entries(对比表).forEach(([测例名, 数据]) => {
-        it.only(测例名, function () {
+        it(测例名, function () {
             const origin = 数据
             const target = origin.cloneDeep()
 
