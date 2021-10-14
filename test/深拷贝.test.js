@@ -1,5 +1,5 @@
 require('should')
-require('../src/拷贝/深拷贝')
+require('../src/算法/拷贝/深拷贝')
 
 describe('复制单一类型', function () {
     const 对比表 = {
